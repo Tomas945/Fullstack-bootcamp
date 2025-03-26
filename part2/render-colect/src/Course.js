@@ -47,14 +47,17 @@ const Course = () => {
 			],
 		},
 	];
+
 	return (
 		<div>
 			{courses.map((course) => {
 				return (
-					<div>
-						<Header title={course.name} />,
+					<div key={course.id}>
+						<Header title={course.name} />
+
 						<Content parts={course.parts} />
-						<Total exercises={course.parts} />
+
+						<Total key={course.parts.id} exercises={course.parts} />
 					</div>
 				);
 			})}
