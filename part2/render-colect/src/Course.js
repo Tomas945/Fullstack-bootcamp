@@ -22,12 +22,18 @@ const Course = () => {
 				exercises: 14,
 				id: 3,
 			},
+            {
+                name: "Redux",
+                exercises: 11,
+                id: 4
+            }
 		],
 	};
 	return (
 		<div>
 			<Header title={course.name} />
 			<Content parts={course.parts} />
+            <Total exercises={course.parts} />
 			
 		</div>
 	);
