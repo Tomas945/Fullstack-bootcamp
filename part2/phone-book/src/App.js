@@ -6,6 +6,12 @@ const App = () => {
 
 	const handleChange = (event) => {
 		setNewName(event.target.value);
+		persons.forEach((person) => {
+			if (person.name=== event.target.value) {
+				alert(person.name + " is already added to phonebook");
+				setNewName("");
+			}
+		});
 	};
 
 	const handleSubmit = (event) => {
@@ -13,6 +19,7 @@ const App = () => {
 		const personObject = {
 			name: newName,
 		};
+
 		setPersons(persons.concat(personObject));
 		setNewName("");
 	};
@@ -25,7 +32,7 @@ const App = () => {
 					name: <input value={newName} onChange={handleChange} />
 				</div>
 				<div>
-					<button >add</button>
+					<button>add</button>
 				</div>
 			</form>
 			<h2>Numbers</h2>
