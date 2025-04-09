@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Filter from "./Filter";
 import Personform from "./Personform";
-import Personslist from "./Persons";
+import Personslist from "./Personslist";
 import axios from 'axios';
 const App = () => {
 	const [persons, setPersons] = useState([]);
@@ -33,8 +33,12 @@ const App = () => {
 			alert(personObject.name + " is already added to phonebook");
 			return;
 		}
-
-		setPersons(persons.concat(personObject));
+		
+		axios
+		.post('http://localhost:3001/persons', personObject)
+		.then(response => {
+		setPersons(persons.concat(response.data))
+	})
 		setNewName("");
 		setNewNumber("");
 	};
