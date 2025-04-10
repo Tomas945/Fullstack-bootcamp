@@ -10,13 +10,17 @@ const App = () => {
 	const [newName, setNewName] = useState("");
 	const [newNumber, setNewNumber] = useState("");
 	const [newFilter, setNewFilter] = useState("");
+	
+ 
 
-	useEffect(() => {
+	useEffect(()=> {
 		getperson()
 		.then(response => {
 		setPersons(response)
-	})}, [])
+	})}, [{db: persons}])
+	
 
+	
 
 	const handleChange = (event) => {
 		setNewName(event.target.value);
@@ -58,10 +62,10 @@ const App = () => {
 			<Filter newFilter={newFilter} handleFilter={handleFilter} />
 			<Personform addName={handleSubmit} newName={newName} handleName={handleChange} newNumber={newNumber} handleNumber={handleNumber} />
 			<h2>Numbers</h2>
-			<Personslist persons={persons} newFilter={newFilter} />
+			<Personslist persons={persons} newFilter={newFilter}  />
 			
 		</div>
 	);
 };
 
-export default App;
+export default  App;
