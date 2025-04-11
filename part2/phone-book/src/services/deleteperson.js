@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const deleteperson = (personid) => {
-    if (window.confirm("Delete this person?"))
+    return(
     axios
     .delete(`http://localhost:3001/persons/${personid}`)       
     .then(response => {
-        return response
+        return response.data
     })
+)
     
 }
 

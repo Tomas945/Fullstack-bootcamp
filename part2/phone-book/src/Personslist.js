@@ -1,6 +1,4 @@
-import deleteperson from "./services/deleteperson";
-
-const Personslist = ({persons, newFilter}) => {
+const Personslist = ({persons, newFilter,deleteHandler}) => {
     
    
         
@@ -10,7 +8,7 @@ const Personslist = ({persons, newFilter}) => {
 	}
         return (
             <div>
-                {filterpersons().map(person => <p key={person.name}>{person.name} {person.number} <button onClick={() => deleteperson(person.id)}>delete</button></p>)}
+                {filterpersons().map(person => <p key={person.name}>{person.name} {person.number} <button onClick={() => deleteHandler(person.id)}>delete</button></p>)}
             </div>
         )
     }

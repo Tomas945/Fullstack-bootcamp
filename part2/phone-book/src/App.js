@@ -4,6 +4,7 @@ import Personform from "./Personform";
 import Personslist from "./Personslist";
 import getperson from "./services/getperson";
 import postperson from "./services/postperson";
+import deleteperson from "./services/deleteperson";
 
 const App = () => {
 	const [persons, setPersons] = useState([]);
@@ -17,10 +18,16 @@ const App = () => {
 		getperson()
 		.then(response => {
 		setPersons(response)
-	})}, [{db: persons}])
+	})}, [])
 	
 
-	
+	const deleteHandler = (id) => {
+		if(window.confirm("Delete " + persons.find(person => person.id === id).name + "?"))
+		{deleteperson(id)
+		.then(response => {
+		setPersons(persons.filter(person => person.id !== id))
+	})}
+	}
 
 	const handleChange = (event) => {
 		setNewName(event.target.value);
@@ -62,7 +69,7 @@ const App = () => {
 			<Filter newFilter={newFilter} handleFilter={handleFilter} />
 			<Personform addName={handleSubmit} newName={newName} handleName={handleChange} newNumber={newNumber} handleNumber={handleNumber} />
 			<h2>Numbers</h2>
-			<Personslist persons={persons} newFilter={newFilter}  />
+			<Personslist persons={persons} newFilter={newFilter} deleteHandler={deleteHandler} />
 			
 		</div>
 	);
