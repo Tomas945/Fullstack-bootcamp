@@ -62,7 +62,9 @@ app.delete("/api/persons/:id", (request, response) => {
 
 app.post("/api/persons", (request, response) => {
     const body = request.body;
-    if (!body.name || !body.number) {
+    const is = persons.some(person => person.name.toLocaleLowerCase().includes(body.name.toLocaleLowerCase()));
+
+    if (!body.name || !body.number || is) {
         return response.status(400).json({
             error: "name or number missing"
         });
