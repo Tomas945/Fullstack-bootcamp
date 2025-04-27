@@ -3,7 +3,7 @@ import axios from "axios";
 const deleteperson = (personid) => {
     return(
     axios
-    .delete(`https://phone-book-backend-y621.onrender.com/api/persons/${personid}`)       
+    .delete(`http://localhost:3001/api/persons/${personid}`)       
     .then(response => {
         return response.data
     })
