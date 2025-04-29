@@ -42,7 +42,7 @@ const App = () => {
 		};
 
 		if (persons.some((person) => person.name.toLowerCase().includes( personObject.name.toLowerCase()))) {
-			alert(personObject.name + " is already added to phonebook");
+			alert(personObject.name + " is already added to phonebook or you forgot to fullfil the form");
 			return;
 		}
 		
